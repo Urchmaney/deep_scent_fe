@@ -4,4 +4,8 @@ import { Component } from "@angular/core";
   selector: 'landing-page-header',
   templateUrl: './landing_header.component.html'
 })
-export class LandingHeaderComponent {}
+export class LandingHeaderComponent {
+  hamburgerClick() {
+    console.log('Clicking');
+  }
+}
