@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductModule } from './shared/product/product.module';
 import { LandingModule } from './pages/landing/landing.module';
-import { LandingHeaderModule } from './shared/landing_header/landing_header.module';
+import { LoginModule } from './pages/login/login.module';
+import { RegisterModule } from './pages/register/register.module';
+import { CheckoutModule } from './pages/checkout/checkout.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { LandingHeaderModule } from './shared/landing_header/landing_header.modu
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductModule,
     LandingModule,
-    LandingHeaderModule
+    LoginModule,
+    RegisterModule,
+    CheckoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
