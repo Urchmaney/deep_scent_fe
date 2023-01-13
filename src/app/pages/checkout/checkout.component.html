@@ -1,17 +1,87 @@
-<main>
+<main style="background-color: #F2F2F2;">
   <landing-page-header></landing-page-header>
-  <h3>Checkout</h3>
-  <section>
+  <section class="px-5">
+    <h3 class="py-3">Checkout</h3>
     <div class="row">
-      <div class="col-md-7">
-        <h5><Details>
-          <p>Name: Unegbu Kingsley</p>
-          <p>Phone Number: 08164292882</p>
-        </Details></h5>
-        
+      <div class="col-md-3 p-4 offset-md-2" style="background-color: white; border-radius: 5px;" >
+        <div>
+          <form>
+            <div>
+              <label>Full Name</label><br />
+              <input type="text" name="full_name" />
+            </div>
+            <div>
+              <label>Email</label><br />
+              <input type="email" name="email" />
+            </div>
+            <div>
+              <label>Phone Number</label><br />
+              <input type="text" name="phone_number" />
+            </div>
+            <div>
+              <label>Address</label><br />
+              <textarea> </textarea> 
+            </div>
+            <p>Payment on delivery. Delivery is free and would be made on the saturday of your purchase. Thanks for your patronage. </p>
+            <input type="submit" value="Place Order" />
+           </form>
+        </div>
+        <Details open>
+          <div class="p-3">
+            <p>Name: Unegbu Kingsley</p>
+            <p>Phone Number: 08164292882</p>
+            <form>
+              <div class="form-group w-75">
+                <label>Address:</label>
+                <textarea class="form-control address-text-area"></textarea>
+              </div>
+            </form>
+          </div>
+        </Details>
+        <div>
+          <h5>Payment Method</h5>
+          <input type="radio" />
+        </div>
       </div>
-      <div class="col-md-4">
-        <p>jjsjd</p>
+      <div class="col-md-5 p-4 offset-md-1" style="background-color: white;">
+        <h5 class="pb-3">Cart</h5>
+        <div>
+          <div class="mb-3">
+            <div class="d-flex">
+              <div>
+                <img src="../../../assets/images/random.jpg" alt="product" width="150" height="180" />
+              </div>
+              <div class="col-md-4 cart_product_detail">
+                <div class="px-2">
+                  <p class="fw-bold fs-5">Lush</p>
+                  <p style="font-size: 12px;">Unit:   GHC 30</p>
+                  <p>Size: 12ml</p>
+                </div>
+              </div>
+              <div class="col-md-3 cart_prod ps-3 d-flex flex-column justify-content-between">
+                <p><span class="d-inline-block quantity-span">-</span><span class="d-inline-block quantity-span">1</span><span class="d-inline-block quantity-span">+</span></p>
+                <p>
+                  GHC 1100
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex mb-3">
+            <img src="../../../assets/images/random.jpg" alt="product" width="150" height="180" />
+            <div class="px-2">
+              <p class="fw-bold fs-5">Lush</p>
+              <p style="font-size: 12px;">Unit:   GHC 30</p>
+              <p>Size: 12ml</p>
+              <p><span class="d-inline-block quantity-span">-</span><span class="d-inline-block quantity-span">1</span><span class="d-inline-block quantity-span">+</span></p>
+             
+            </div>
+          </div>
+        </div>
+        <p>Delivery:  GHC 150</p>
+        <p>Discount:  GHC 0</p>
+        <div style="background-color: gray;" class="w-75 mx-auto p-3 text-center">
+          Total:   GHC 130
+        </div>
       </div>
     </div>
   </section>
