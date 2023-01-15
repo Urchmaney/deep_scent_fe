@@ -35,26 +35,15 @@
         <div>
           <div class="d-inline-block position-relative">
             <a class="nav-link dropdown-toggle"  id="cartMenu" data-bs-toggle="dropdown" aria-expanded="false" href="#"><img src="../../../assets/images/cart.svg" alt="cart" width="40" height="20"/></a>
-            <div class="position-absolute notificaion-indicator" style="background-color: red;">
+            <div *ngIf="cartIsNotEmpty()" class="position-absolute notificaion-indicator" style="background-color: red;">
             </div>
       
               <ul class="dropdown-menu cart_menu" aria-labelledby="cartMenu">
-                <li class="cart_product_container">
+                <li class="cart_product_container" *ngFor="let product of cartProducts | async">
                   <div class="text-center">
-                    <img src="../../../assets/images/oil.jpeg" alt="productImage" />
+                    <img src="{{product.imageUrl}}" alt="productImage" />
                     <p class="fw-bold">
-                      Lush
-                    </p>
-                    <p style="font-size: 12px;" class="mb-2">12 ml</p>
-                    <div><app-cart-quantity-changer></app-cart-quantity-changer></div>
-                  </div>
-                  <hr />
-                </li>
-                <li class="cart_product_container">
-                  <div class="text-center">
-                    <img src="../../../assets/images/oil.jpeg" alt="productImage" />
-                    <p class="fw-bold">
-                      Lush
+                      {{product.name}}
                     </p>
                     <p style="font-size: 12px;" class="mb-2">12 ml</p>
                     <div><app-cart-quantity-changer></app-cart-quantity-changer></div>
@@ -62,7 +51,7 @@
                   <hr />
                 </li>
                 <li>
-                  <button class="btn btn-secondary w-100">Checkout</button>
+                  <button class="btn btn-secondary w-100" (click)="clearCart()">Checkout</button>
                 </li>
               </ul>           
           </div>
