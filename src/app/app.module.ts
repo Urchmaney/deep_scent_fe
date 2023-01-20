@@ -17,6 +17,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
