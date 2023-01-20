@@ -15,6 +15,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
