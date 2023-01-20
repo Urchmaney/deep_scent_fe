@@ -32,7 +32,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     AppRoutingModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
