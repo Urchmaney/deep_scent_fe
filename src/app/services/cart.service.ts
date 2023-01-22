@@ -19,7 +19,7 @@ export class CartServiceService {
   getCartProducts() {
     const products = JSON.parse(this.localStorageServie.getLocalStorageItem(PRODUCTS_LOCAL_STORAGE_KEY) || '[]');
     this._myData$.next(products);
-    this._totalPrice$.next(products.reduce((acc: number, val: Product) => acc + val.price , 0));
+    this._totalPrice$.next(products.reduce((acc: number, val: Product) => acc + (val.price * val.quantity) , 0));
     return products;
   }
 
@@ -30,7 +30,7 @@ export class CartServiceService {
     existing ? existing.quantity += 1 : newProducts.push(product);    
     this.saveCartProducts(newProducts);
     this._myData$.next(newProducts);
-    this._totalPrice$.next(newProducts.reduce((acc: number, val: Product) => acc + val.price , 0));
+    this._totalPrice$.next(newProducts.reduce((acc: number, val: Product) => acc + (val.price * val.quantity) , 0));
   }
 
 
@@ -45,7 +45,7 @@ export class CartServiceService {
 
     this.saveCartProducts(newProducts);
     this._myData$.next(newProducts);
-    this._totalPrice$.next(newProducts.reduce((acc: number, val: Product) => acc + val.price , 0));
+    this._totalPrice$.next(newProducts.reduce((acc: number, val: Product) => acc + (val.price * val.quantity) , 0));
   }
 
   removeProductFromCart(product: Product) {
@@ -57,7 +57,7 @@ export class CartServiceService {
     const newProducts = [...products];
     this.saveCartProducts(newProducts);
     this._myData$.next(newProducts);
-    this._totalPrice$.next(newProducts.reduce((acc: number, val: Product) => acc + val.price , 0));
+    this._totalPrice$.next(newProducts.reduce((acc: number, val: Product) => acc + (val.price * val.quantity) , 0));
   }
 
   saveCartProducts(products: Product[]) {
