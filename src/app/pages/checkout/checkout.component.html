@@ -1,88 +1,94 @@
-<main style="background-color: #F2F2F2;">
-  <landing-page-header></landing-page-header>
-  <section class="px-5">
-    <h3 class="py-3">Checkout</h3>
-    <div class="row">
-      <div class="col-md-3 p-4 offset-md-2" style="background-color: white; border-radius: 5px;" >
-        <div>
-          <form>
-            <div>
-              <label>Full Name</label><br />
-              <input type="text" name="full_name" />
-            </div>
-            <div>
-              <label>Email</label><br />
-              <input type="email" name="email" />
-            </div>
-            <div>
-              <label>Phone Number</label><br />
-              <input type="text" name="phone_number" />
-            </div>
-            <div>
-              <label>Address</label><br />
-              <textarea> </textarea> 
-            </div>
-            <p>Payment on delivery. Delivery is free and would be made on the saturday of your purchase. Thanks for your patronage. </p>
-            <input type="submit" value="Place Order" />
-           </form>
-        </div>
-        <Details open>
-          <div class="p-3">
-            <p>Name: Unegbu Kingsley</p>
-            <p>Phone Number: 08164292882</p>
-            <form>
-              <div class="form-group w-75">
-                <label>Address:</label>
-                <textarea class="form-control address-text-area"></textarea>
-              </div>
-            </form>
+<section class="h-100" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+          <div>
+  
           </div>
-        </Details>
-        <div>
-          <h5>Payment Method</h5>
-          <input type="radio" />
         </div>
-      </div>
-      <div class="col-md-5 p-4 offset-md-1" style="background-color: white;">
-        <h5 class="pb-3">Cart</h5>
-        <div>
-          <div class="mb-3">
-            <div class="d-flex">
-              <div>
-                <img src="../../../assets/images/random.jpg" alt="product" width="150" height="180" />
+
+        <div class="card rounded-3 mb-4" *ngFor="let cartProduct of cartProducts$ | async">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="{{cartProduct.imageUrl}}"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
               </div>
-              <div class="col-md-4 cart_product_detail">
-                <div class="px-2">
-                  <p class="fw-bold fs-5">Lush</p>
-                  <p style="font-size: 12px;">Unit:   GHC 30</p>
-                  <p>Size: 12ml</p>
-                </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">{{cartProduct.name}}</p>
+                
               </div>
-              <div class="col-md-3 cart_prod ps-3 d-flex flex-column justify-content-between">
-                <p><span class="d-inline-block quantity-span">-</span><span class="d-inline-block quantity-span">1</span><span class="d-inline-block quantity-span">+</span></p>
-                <p>
-                  GHC 1100
-                </p>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  (click)="decrementCartProductQty(cartProduct)">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="{{cartProduct.quantity}}" type="number"
+                  class="form-control form-control-sm" disabled />
+
+                <button class="btn btn-link px-2"
+                  (click)="incrementCartProductQty(cartProduct)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">&#8373;{{cartProduct.price}}</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a (click)="removeProductFromCart(cartProduct)" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
               </div>
             </div>
           </div>
-          <div class="d-flex mb-3">
-            <img src="../../../assets/images/random.jpg" alt="product" width="150" height="180" />
-            <div class="px-2">
-              <p class="fw-bold fs-5">Lush</p>
-              <p style="font-size: 12px;">Unit:   GHC 30</p>
-              <p>Size: 12ml</p>
-              <p><span class="d-inline-block quantity-span">-</span><span class="d-inline-block quantity-span">1</span><span class="d-inline-block quantity-span">+</span></p>
-             
+          
+        </div>
+        <div class="position-relative" style="height: 50px; top: -20px;">
+          <div class="position-absolute pt-1 px-5" style="height: 50px; right: 0; top: 0; background-color: lightgray;">
+            <span class="h-5" style="font-size: 15px;">Total:</span> <span> &#8373;  {{ totalPrice | async }}</span>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body p-4 ">
+
+            <div class="form-outline flex-fill">
+              <label class="form-label" for="full_name">Full Name</label>
+              <input type="text" id="full_name" class="form-control form-control-lg"  [(ngModel)]="full_name" />
+            </div>
+
+            <div class="form-outline flex-fill">
+              <label class="form-label" for="phone_number">Phone Number</label>
+              <input type="text" id="phone_number" class="form-control form-control-lg" [(ngModel)]="phone_number" />
+            </div>
+
+            <div class="form-outline flex-fill">
+              <label class="form-label" for="email">Email</label>
+              <input type="email" id="email" class="form-control form-control-lg" [(ngModel)]="email" />
+            </div>
+
+            <div class="form-outline flex-fill">
+              <label class="form-label" for="address">Address</label>    
+              <textarea id="address" class="form-control form-control-lg" [(ngModel)]="address">
+
+              </textarea>
+                       
             </div>
           </div>
         </div>
-        <p>Delivery:  GHC 150</p>
-        <p>Discount:  GHC 0</p>
-        <div style="background-color: gray;" class="w-75 mx-auto p-3 text-center">
-          Total:   GHC 130
+
+        <div class="card text-center">
+          <div class="card-body">
+            <button type="button" class="btn btn-warning btn-block btn-lg" style="background-color: #377771 !important; border: 0; color: white;" (click)="placeOrder()">Place Order</button>
+          </div>
         </div>
+
       </div>
     </div>
-  </section>
-</main> 
+  </div>
+</section>
+
+<a _ngcontent-yqo-c20="" class="text-danger"><i _ngcontent-yqo-c20="" class="fas fa-trash fa-lg"></i></a>

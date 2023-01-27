@@ -1,25 +1,21 @@
-import { Component } from "@angular/core";
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
 
-interface Product {
-  name: string
-  imageUrl: string
-}
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'landing-page',
-  templateUrl: "./landing.component.html",
+  selector: 'app-landing',
+  templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent {
-  products$ : Observable<Product[]>
-  private productsCollection: AngularFirestoreCollection<Product>;
+export class LandingComponent implements OnInit {
 
-  constructor(afs: AngularFirestore) {
-    this.productsCollection = afs.collection<Product>('producta');
-    this.products$ = this.productsCollection.valueChanges();
-    // const fireCollection = collection(firestore, 'producta');
-    // this.products$ = collectionData(fireCollection);
+  constructor(private toastr: ToastrService) { }
+
+  showSuccess() {
+    this.toastr.success('Successfully added to cart');
   }
+
+  ngOnInit(): void {
+  }
+
 }
