@@ -1,0 +1,22 @@
+.address-text-area {
+  height: 90px;
+}
+
+.quantity-span {
+  width: 20px;
+  border: 1px solid lightgray;
+  text-align: center;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .cart_product_detail{
+    position: relative;
+  }
+  
+  .cart_prod {
+    border-left: 1px solid lightgray;
+    height: 100px;
+  }
+
+}

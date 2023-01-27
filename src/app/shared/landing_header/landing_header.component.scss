@@ -1,0 +1,26 @@
+.notificaion-indicator {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 3px;
+  right: 1px;
+  top: 25px;
+}
+
+.cart-card {
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.abs-card {
+  right: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .cart_product_detail{
+    position: relative;
+    left: -15px;
+  }
+}

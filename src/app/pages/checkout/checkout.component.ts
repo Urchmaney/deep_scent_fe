@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Order } from 'src/app/models/order';
@@ -72,3 +73,4 @@ export class CheckoutComponent implements OnInit {
   }
 
 }
+
